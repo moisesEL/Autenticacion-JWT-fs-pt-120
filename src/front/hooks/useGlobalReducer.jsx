@@ -17,7 +17,11 @@ export function StoreProvider({ children }) {
     </StoreContext.Provider>
 }
 
-// Custom hook to access the global state and dispatch function.
+export function useStore() {
+    const { dispatch, store } = useContext(StoreContext)
+    return [store, dispatch];
+}
+
 export default function useGlobalReducer() {
     const { dispatch, store } = useContext(StoreContext)
     return { dispatch, store };
